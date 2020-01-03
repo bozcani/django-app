@@ -1,0 +1,26 @@
+{% if person_list and trip_list and traveler_list %}
+    <p><b>Persons:</b></p>
+    <ul>
+    {% for person in person_list %}
+        <li><a href="/gezi/person/{{ person.id }}/">{{ person.first_name }}</a></li>
+    {% endfor %}
+    </ul>
+
+    <p><b>Trips:</b></p>
+    <ul>
+    {% for trip in trip_list %}
+        <li><a href="/gezi/trip/{{ trip.id }}/">{{ trip.trip_name }}</a></li>
+    {% endfor %}
+    </ul>
+
+    <p><b>Travelers:</b></p>
+    <ul>
+    {% for traveler in traveler_list %}
+        <li><a href="/gezi/person/{{ traveler.person.id }}/">{{ traveler.person.first_name }}</a> goes to <a href="/gezi/trip/{{ traveler.trip.id }}/">{{ traveler.trip.trip_name }}</a></li>
+    {% endfor %}
+    </ul>   
+
+
+{% else %}
+    <p>No persons are available.</p>
+{% endif %}
