@@ -41,3 +41,20 @@ def person(request, person_id):
 
 def traveler(request, traveler_id):
     return HttpResponse("You're looking at traveler %s." % traveler_id)    
+
+def addnewperson(request):
+    return render(request, 'gezi/addnewperson.html')
+
+def adding_result(request):
+    first_name = request.GET.get('first_name')
+    last_name = request.GET.get('last_name')
+    birthdate = request.GET.get('birthdate')
+
+    new_person = Person(first_name=first_name, last_name=last_name, birthdate=birthdate)
+    new_person.save()
+    context = {
+        'first_name':first_name,
+        'last_name':last_name,
+        'birthdate':birthdate
+    }    
+    return render(request, 'gezi/adding_result.html',context)
