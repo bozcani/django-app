@@ -21,7 +21,14 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def trip(request, trip_id):
-    return HttpResponse("You're looking at trip %s." % trip_id)    
+    trip = get_object_or_404(Trip, pk=trip_id)
+    travel_list = Traveler.objects.filter(trip=trip)
+    context = {
+        'trip':trip,
+        'travel_list':travel_list
+    }
+    return render(request, 'gezi/trip.html', context)
+
 
 def person(request, person_id):
     person = get_object_or_404(Person, pk=person_id)

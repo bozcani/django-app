@@ -7,12 +7,12 @@
     <li>Travels:
         <ul>
             {% for traveler in travel_list %}
-            <li> goes to {{ traveler.trip.trip_name }}</a></li>
+            <li> goes to <a href="{% url 'gezi:trip' traveler.trip.id %}">{{ traveler.trip.trip_name }}</a> </li>
             {% endfor %}
 
         </ul>
 
-
+        
 
     </li>
 

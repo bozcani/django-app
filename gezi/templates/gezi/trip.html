@@ -1,0 +1,27 @@
+{% if trip %}
+    <p><b>Trip {{ trip.id }}</b></p>
+    <ul>
+        
+    <li>Trip Name: {{ trip.trip_name }}</li>
+    <li>City: {{ trip.city }} </li>
+    <li>Date: {{ trip.date }} </li>
+    <li>Travels:
+        <ul>
+            {% for traveler in travel_list %}
+            <li> <a href="{% url 'gezi:person' traveler.person.id %}">{{ traveler.person.first_name }}</a> joins.</li>
+            {% endfor %}
+
+        </ul>
+
+        
+
+    </li>
+
+    </ul>
+    
+        
+
+
+{% else %}
+    <p>Trip does not exist.</p>
+{% endif %}
