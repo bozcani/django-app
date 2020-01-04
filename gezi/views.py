@@ -58,3 +58,22 @@ def adding_result(request):
         'birthdate':birthdate
     }    
     return render(request, 'gezi/adding_result.html',context)
+
+
+def delete_person(request):
+    person_list = Person.objects.all()
+    context = {
+        'person_list':person_list
+    }
+    return render(request, 'gezi/delete_person.html', context)
+
+def delete_person_result(request):
+    person_id = request.GET.get('person_id')
+    person = Person.objects.get(pk=person_id)
+    context = {
+        'first_name':person.first_name,
+        'last_name':person.last_name
+    }
+    person.delete()
+
+    return render(request, 'gezi/delete_person_result.html', context)

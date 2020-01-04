@@ -1,0 +1,24 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'gezi/delete_person.css' %}">
+
+{% if person_list %}
+
+<p><b>Delete person</b></p>
+<p><b>Choose user from top down menu</b></p>
+
+
+<form action="/gezi/delete_person_result">
+    <select name="person_id">
+        {% for person in person_list %}
+        <option value="{{ person.id }}" selected="selected"> {{ person.first_name }} {{ person.last_name }} </option>
+
+        {% endfor %}
+
+    </select>
+    <input type="submit" value="Delete"/>
+  </form>
+
+
+
+{% endif %}
