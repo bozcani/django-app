@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.template import loader
-
+from django.shortcuts import render, get_object_or_404
 
 from .models import Person, Trip, Traveler
 # Create your views here.
@@ -24,7 +24,13 @@ def trip(request, trip_id):
     return HttpResponse("You're looking at trip %s." % trip_id)    
 
 def person(request, person_id):
-    return HttpResponse("You're looking at person %s." % person_id)    
+    person = get_object_or_404(Person, pk=person_id)
+    travel_list = Traveler.objects.filter(person=person)
+    context = {
+        'person':person,
+        'travel_list':travel_list
+    }
+    return render(request, 'gezi/person.html', context)
 
 def traveler(request, traveler_id):
     return HttpResponse("You're looking at traveler %s." % traveler_id)    

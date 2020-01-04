@@ -1,0 +1,26 @@
+{% if person %}
+    <p><b>Person {{ person.id }}</b></p>
+    <ul>
+        
+    <li>Name: {{ person.first_name }} {{ person.last_name }}</li>
+    <li>Birth date: {{ person.birthdate }} </li>
+    <li>Travels:
+        <ul>
+            {% for traveler in travel_list %}
+            <li> goes to {{ traveler.trip.trip_name }}</a></li>
+            {% endfor %}
+
+        </ul>
+
+
+
+    </li>
+
+    </ul>
+    
+        
+
+
+{% else %}
+    <p>Person does not exist.</p>
+{% endif %}
