@@ -105,3 +105,22 @@ def add_traveler_result(request):
     }
 
     return render(request, 'gezi/add_traveler_result.html', context)
+
+def delete_traveler(request):
+    traveler_list = Traveler.objects.all()
+    context = {
+        'traveler_list':traveler_list
+    }
+    return render(request, 'gezi/delete_traveler.html', context)
+
+def delete_traveler_result(request):
+    traveler_id = request.GET.get('traveler_id')
+    traveler = Traveler.objects.get(pk=traveler_id)
+    context = {
+        'first_name':traveler.person.first_name,
+        'last_name':traveler.person.last_name,
+        'trip_name':traveler.trip.trip_name
+    }
+    traveler.delete()
+
+    return render(request, 'gezi/delete_traveler_result.html', context)   
