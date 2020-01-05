@@ -124,3 +124,41 @@ def delete_traveler_result(request):
     traveler.delete()
 
     return render(request, 'gezi/delete_traveler_result.html', context)   
+
+
+def add_trip(request):
+    return render(request, 'gezi/add_trip.html')    
+
+def add_trip_result(request):
+    trip_name = request.GET.get('trip_name')
+    city = request.GET.get('city')
+    date = request.GET.get('date')
+
+    new_trip = Trip(trip_name=trip_name, city=city, date=date)
+    new_trip.save()
+    context = {
+        'trip_name':trip_name,
+        'city':city,
+        'date':date
+    }    
+    return render(request, 'gezi/add_trip_result.html',context)
+
+
+def delete_trip(request):
+    trip_list = Trip.objects.all()
+    context = {
+        'trip_list':trip_list
+    }
+    return render(request, 'gezi/delete_trip.html', context)
+
+def delete_trip_result(request):
+    trip_id = request.GET.get('trip_id')
+    trip = Trip.objects.get(pk=trip_id)
+    context = {
+        'trip_name':trip.trip_name,
+        'city':trip.city,
+        'date':trip.date
+    }
+    trip.delete()
+
+    return render(request, 'gezi/delete_trip_result.html', context)
