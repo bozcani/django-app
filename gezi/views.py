@@ -77,3 +77,31 @@ def delete_person_result(request):
     person.delete()
 
     return render(request, 'gezi/delete_person_result.html', context)
+
+def add_traveler(request):
+    person_list = Person.objects.all()
+    trip_list = Trip.objects.all()
+
+    context = {
+        'person_list':person_list,
+        'trip_list':trip_list
+    }
+    return render(request, 'gezi/add_traveler.html', context)
+
+def add_traveler_result(request):
+    person_id = request.GET.get('person_id')
+    trip_id = request.GET.get('trip_id')
+    person = Person.objects.get(pk=person_id)
+    trip = Trip.objects.get(pk=trip_id)
+
+    new_traveler = Traveler(trip=trip, person=person)
+    new_traveler.save()
+    context = {
+        'first_name':person.first_name,
+        'last_name':person.last_name,
+        'trip_name':trip.trip_name,
+        'city':trip.city,
+        'date':trip.date
+    }
+
+    return render(request, 'gezi/add_traveler_result.html', context)

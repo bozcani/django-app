@@ -11,6 +11,8 @@ urlpatterns = [
     path('addnewperson', views.addnewperson, name='addnewperson'),
     path('adding_result', views.adding_result, name='adding_result'),
     path('delete_person', views.delete_person, name='delete_person'),
-    path('delete_person_result', views.delete_person_result, name='delete_person_result')
+    path('delete_person_result', views.delete_person_result, name='delete_person_result'),
+    path('add_traveler', views.add_traveler, name='add_traveler'),
+    path('add_traveler_result', views.add_traveler_result, name='add_traveler_result')
 
 ]

@@ -1,0 +1,21 @@
+    <p><b>Adding new traveler</b></p>
+    
+    <form action="/gezi/add_traveler_result">
+        <p> Select person: </p>
+        <select name="person_id">
+            {% for person in person_list %}
+            <option value="{{ person.id }}" selected="selected"> {{ person.first_name }} {{ person.last_name }} </option>
+            {% endfor %}
+    
+        </select>
+
+        <p> Select trip: </p>
+        <select name="trip_id">
+            {% for trip in trip_list %}
+            <option value="{{ trip.id }}" selected="selected"> {{ trip.trip_name }} </option>
+            {% endfor %}
+    
+        </select>
+        <input type="submit" value="Add traveler"/>
+      </form>
+
