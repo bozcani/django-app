@@ -42,10 +42,10 @@ def person(request, person_id):
 def traveler(request, traveler_id):
     return HttpResponse("You're looking at traveler %s." % traveler_id)    
 
-def addnewperson(request):
-    return render(request, 'gezi/addnewperson.html')
+def add_person(request):
+    return render(request, 'gezi/add_person.html')
 
-def adding_result(request):
+def add_person_result(request):
     first_name = request.GET.get('first_name')
     last_name = request.GET.get('last_name')
     birthdate = request.GET.get('birthdate')
@@ -57,7 +57,7 @@ def adding_result(request):
         'last_name':last_name,
         'birthdate':birthdate
     }    
-    return render(request, 'gezi/adding_result.html',context)
+    return render(request, 'gezi/add_person_result.html',context)
 
 
 def delete_person(request):
