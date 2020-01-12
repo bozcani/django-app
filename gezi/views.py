@@ -9,12 +9,16 @@ def index(request):
     persons = Person.objects.all()
     travelers = Traveler.objects.all()
 
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
 
     template = loader.get_template('gezi/index.html')
     context = {
         'person_list':persons,
         'trip_list':trips,
-        'traveler_list':travelers
+        'traveler_list':travelers,
+        'num_visits':num_visits
 
     }
 

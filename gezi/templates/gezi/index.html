@@ -44,6 +44,7 @@
         <input type="submit" value="Delete trip" />
     </form>
 
+    <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>   
 
 {% else %}
     <p>No persons are available.</p>
