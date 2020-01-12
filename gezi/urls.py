@@ -1,5 +1,5 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from . import views, core_views
 
 app_name = 'gezi'
 
@@ -19,7 +19,11 @@ urlpatterns = [
     path('add_trip', views.add_trip, name='add_trip'),
     path('add_trip_result', views.add_trip_result, name='add_trip_result'),
     path('delete_trip', views.delete_trip, name='delete_trip'),
-    path('delete_trip_result', views.delete_trip_result, name='delete_trip_result')
+    path('delete_trip_result', views.delete_trip_result, name='delete_trip_result'),
+    path('accounts/', include('django.contrib.auth.urls')),
+
+    # Core views
+    path('signup/', core_views.signup, name='signup'),
 
 
 ]

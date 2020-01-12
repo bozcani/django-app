@@ -24,6 +24,7 @@ def index(request):
 
     return HttpResponse(template.render(context, request))
 
+
 def trip(request, trip_id):
     trip = get_object_or_404(Trip, pk=trip_id)
     travel_list = Traveler.objects.filter(trip=trip)
