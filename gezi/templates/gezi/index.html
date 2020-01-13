@@ -1,15 +1,15 @@
+{% extends 'base.html' %}
 
+{% block title %}
+  Gezi: Share your travel
+{% endblock %}
 
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'gezi:index' %}">Gezi MainPage</a></li>
+{% endblock %}
 
-
-{% load static %}<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Boards</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-  </head>
-  <body>
+{% block content %}
+    
     {% if person_list and trip_list and traveler_list %}
     <p><b>Persons:</b></p>
     <ul>
@@ -62,5 +62,4 @@
     <p>No persons are available.</p>
 {% endif %}
 
-  </body>
-</html>
+{% endblock %}
