@@ -20,6 +20,9 @@ urlpatterns = [
     path('add_trip_result', views.add_trip_result, name='add_trip_result'),
     path('delete_trip', views.delete_trip, name='delete_trip'),
     path('delete_trip_result', views.delete_trip_result, name='delete_trip_result'),
+    
+    path('u/<str:username>/', views.user_profile, name='user_profile'),
+
     path('accounts/', include('django.contrib.auth.urls')),
 
     # Core views

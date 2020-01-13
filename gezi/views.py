@@ -167,3 +167,7 @@ def delete_trip_result(request):
     trip.delete()
 
     return render(request, 'gezi/delete_trip_result.html', context)
+
+
+def user_profile(request, username):
+    return HttpResponse(username)
